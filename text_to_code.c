@@ -108,7 +108,7 @@ int reference[95]={
 131141
 };
 
-char data[50];int length,checksum,encrypt[20];char* img;int width=1000;
+char data[50];int length,checksum,encrypt[20];char* img;int width;
 
 void initializePic(){
 img = malloc(width*height*channel);
@@ -169,7 +169,8 @@ void pattern(){
 void main(){      
     printf("Enter the text you want the bar code of:\n");
     gets(data);
-    length=strlen(data);    
+    length=strlen(data);  
+    width=11*line*(length+5);  
     initializePic();
     for(int i=0;i<10;i++)
         drawVertical(1);
