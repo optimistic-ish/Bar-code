@@ -115,8 +115,8 @@ int width;
 
 void initializePic()
 {
-    width = (length + 3) * 12 * line; //A character in bar code has 12 lines or digits.
-            img = malloc(width * height * channel);
+    width = (length + 3) * 11 * line + 20 * line; //A character in bar code has 11 lines or digits.2 for start and end black spaces and 20 for extra white spaces.
+    img = malloc(width * height * channel);
     if (img == NULL)
     {
         printf("File could not be created!\n");
