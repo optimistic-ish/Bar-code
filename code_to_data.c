@@ -180,10 +180,12 @@ void main(){
         }
     }
     for(int i=0;i<width;i++)
-        data[i]/=factor;     
-    printf("Width=%dpx\nHeight=%dpx\nChannels=%d\n",width,height,channel);    
+        data[i]/=factor;
+    printf("\nImage information:\n");     
+    printf("Width=%dpx\t\tHeight=%dpx\t\tChannels=%d\n\n",width,height,channel);
+    printf("\nThe numeric code is:\n");    
     code();
-    printf("\n");
+    printf("\n\nThe decoded text is:\n");
     decode();
     stbi_image_free(img);
 }
