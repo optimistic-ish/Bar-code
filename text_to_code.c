@@ -114,8 +114,8 @@ int width;
 
 void initializePic()
 {
-    width = ((length + 3) * 11 * line)+20*line+2*line; //A character in bar code has 12 lines or digits.
-            img = malloc(width * height * channel);
+    width = ((length + 3) * 11 * line) + 20 * line + 2 * line; //A character in bar code has 12 lines or digits.
+    img = malloc(width * height * channel);
     if (img == NULL)
     {
         printf("File could not be created!\n");
@@ -175,7 +175,7 @@ void pattern()
     }
 }
 
-void main()
+void mmain()
 {
     printf("Enter the text you want the bar code of:\n");
     gets(data);

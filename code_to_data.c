@@ -4,10 +4,8 @@
 #include<math.h>
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
-#define STB_IMAGE_WRITE_IMPLEMENTATION
-#include "stb_image_write.h"
 int s_row,s_col;unsigned char data[100];int result[20];int total=0;
-int reference[95]={
+int reference2[95]={
 212222,
 222122,
 222221,
@@ -121,13 +119,13 @@ while(1){
 void decode(){
 for(int i=1;i<total-2;i++){
     for(int j=0;j<95;j++){
-        if(reference[j]==result[i])
+        if(reference2[j]==result[i])
             printf("%c",j+32);
     }
 }
 }
 
-void main(){    
+void lmain(){    
     
     int width,height,channel;
     unsigned char *img = stbi_load("result.jpg",&width,&height,&channel,1);

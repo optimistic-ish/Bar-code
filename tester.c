@@ -1,12 +1,42 @@
-#include "barcode.h"
 #include <stdio.h>
+
+
+int start(char[]);
+int encode();
+int draw();
+void clear();
+
+void lmain();
+void mmain();
+
 int main()
 {
-	//FILE* f = fopen("lala.txt", "w");
-	for (int i = 0; i < MAX_REF; i++)
+
+	char name[100];
+	printf("Enter filename to write bar code on:");
+	scanf("%s", name);
+
+	if (start(name) < 0)
 	{
-		printf("%s\t", reference[i]);
-		//fprintf(f,"'%d',\n",reference[i]);
+		printf("Couldnot initialize image in RAM.\n");
+		return -1;
 	}
+
+	if (encode() < 0)
+	{
+		printf("Couldnot encode the message to bar code.\n");
+		clear();
+		return -1;
+	}
+
+	if (draw() < 0)
+	{
+		printf("Couldnot create required image file.\n");
+		clear();
+		return -1;
+	}
+	clear();
+	printf("Your barcode has been created in file named %s .", name);
+
 	return 0;
 }

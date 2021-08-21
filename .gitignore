@@ -54,3 +54,7 @@ dkms.conf
 #others
 *.vs
 *.txt
+CppProperties.json
+*.vcxproj*
+*.sln
+*x64*
