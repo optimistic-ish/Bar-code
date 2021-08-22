@@ -1,25 +1,32 @@
-#include <stdio.h>
-
 #include "barcode.h"
-//#define STB_IMAGE_WRITE_IMPLEMENTATION
+
+//Includes external tool required to write image files
+#define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
 
-#define IMG_HEIGHT 110
+#define IMG_HEIGHT 160
 #define LINE_W 3
-#define BORDER 10
+#define BORDER 20
 #define MAX_CHARS 100
 #define BACKGROUND 255
 //last 1 for '\0'
-char _data[MAX_CHARS + 1];
+static char _data[MAX_CHARS + 1];
 
 //3 additional for startcode, checksum and endcode
-char* _encoded[MAX_CHARS + 3];
+static char* _encoded[MAX_CHARS + 3];
 
-char outFileName[50], * Image;
-int checksum, length, img_width;
+static char outFileName[50], * Image;
+static int checksum, length, img_width;
+
+//Frees all used resources
+static void clear()
+{
+	free(Image);
+	checksum = 0; length = 0; img_width = 0;
+}
 
 //Returns -1 if line width overflows
-int drawLine(int wide, int isItWhite)
+static int drawLine(int wide, int isItWhite)
 {
 	//A static variable to track current line position across function calls
 	static int pos = 0;
@@ -45,9 +52,16 @@ int drawLine(int wide, int isItWhite)
 	return 0;
 }
 
-int start(char filename[])
+//Initializes memory space for recording bar code data
+//Returns negative values for errors, also checks if file is available to write
+static int initialize(char filename[])
 {
 	strcpy(outFileName, filename);
+
+	FILE* tmp = fopen(filename, "wb");
+	if (tmp == NULL)
+		return -1;
+	fclose(tmp);
 
 	printf("Enter the text you need to write encode barcode with (max characters 100).\n");
 	scanf(" %100[^\n]", _data);
@@ -59,7 +73,8 @@ int start(char filename[])
 	return 0;
 }
 
-int encode()
+//Encodes ASCII characters to barcodes
+static int encode()
 {
 	//ASCII value is 32 more than corresponding Barcode value
 	for (int i = 0; i < length; i++)
@@ -81,7 +96,9 @@ int encode()
 	return 0;
 }
 
-int draw()
+//Writes bar code content to make image
+//Returns -1 if file couldnot be created
+static int draw()
 {
 	//Creates a background with colour value as per macro
 	memset(Image, BACKGROUND, IMG_HEIGHT * img_width);
@@ -105,7 +122,34 @@ int draw()
 	return 0;
 }
 
-void clear()
+int writeBarCode()
 {
-	free(Image);
+	char name[100];
+	printf("Enter filename to write bar code on:");
+	scanf("%s", name);
+
+	if (initialize(name) < 0)
+	{
+		printf("Couldnot initialize image in RAM.\n");
+		return -1;
+	}
+
+	if (encode() < 0)
+	{
+		printf("Couldnot encode the message to bar code.\n");
+		clear();
+		return -1;
+	}
+
+	if (draw() < 0)
+	{
+		printf("Couldnot create required image file.\n");
+		clear();
+		return -1;
+	}
+	clear();
+	printf("Your barcode has been created in file named %s .\n", name);
+
+
+	return 0;
 }
