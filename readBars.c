@@ -144,7 +144,7 @@ int decodeStr()
     return 0;
 }
 
-void readBarCode()
+int readBarCode()
 {
     printf("Enter name of file { with extension } to read bar code from : ");
     char name[100];

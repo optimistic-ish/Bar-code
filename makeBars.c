@@ -13,7 +13,7 @@
 static char _data[MAX_CHARS + 1];
 
 //3 additional for startcode, checksum and endcode
-static char* _encoded[MAX_CHARS + 3];
+static const char* _encoded[MAX_CHARS + 3];
 
 static char outFileName[50], * Image;
 static int checksum, length, img_width;
