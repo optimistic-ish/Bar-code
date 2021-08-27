@@ -38,7 +38,7 @@ int loadImg(char filename[])
 	if (Image == NULL)
 		return -1;
     printf("\n\nImage information:\n");
-    printf("File name: %s\nImage height=%d\nImage width=%d,Channels=%d\n\n",filename,img_height,img_width,channel);
+    printf("File name: %s\nImage height=%d\nImage width=%d\nChannels=%d\n\n",filename,img_height,img_width,channel);
     for (int i = 0; i < img_height; i++) {
         for (int j = 0; j < img_width; j++) {
             if (Image[i * img_width + j] < 100) {
@@ -174,7 +174,7 @@ int readBarCode()
         stbi_image_free(Image);
         return -1;
     }
-    printf("The decoded data from bar code is:\n %s\n", _data);
+    printf("The decoded data from bar code is:\n%s\n", _data);
     stbi_image_free(Image);
     return 0;
 }
