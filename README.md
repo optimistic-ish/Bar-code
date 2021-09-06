@@ -37,3 +37,10 @@ Probably the makefile in this directory will work too just type "make" in consol
 
 #### entry.c:
 	This source file contains the main() function and binds all other codes.
+
+### To compile the code:
+Change directory of terminal to the folder containing the source code and type:
+
+ **gcc entry.c makeBars.c readBars.c -o Barcode**
+
+
