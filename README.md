@@ -1,5 +1,5 @@
 # Bar-code:
-This repo contains the code to convert entered text to bar code(128B) and decrypt it back to the original message.
+This repo contains the code to convert entered text to bar code(128B) and decrypt it back to the original message. This was a part of our first sem programming project.
 
 To build just make sure you include stbi libraries too.
 Probably the makefile in this directory will work too just type "make" in console and you will be fine.
