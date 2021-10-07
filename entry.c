@@ -15,8 +15,8 @@ void cls()
 }
 #endif
 
-int main()
-{   while(1){
+//title 
+char title(){
 	char choice;
 	cls();
 	printf("\n_____                          _    \n| __ )  __ _ _ __ ___ ___   __| | ___\n|  _ \\ / _` | '__/ __/ _ \\ / _` |/ _ \\ \n| |_) | (_| | | | (_| (_) | (_| |  __/ \n|____/ \\__,_|_|  \\___\\___/ \\__,_|\\___|\n\n");
@@ -24,27 +24,42 @@ int main()
 
 	printf("Enter one of the following numbers: \n");
 	printf("1. Create a jpeg format bar code image from text.\n");
-	printf("2. Read message from a type B barcode image file.\n");	
+	printf("2. Read message from a type B barcode image file.\n");
+	printf("3 Exit\n");	
 	scanf(" %c", &choice);
-	if (choice == '1'){
-		writeBarCode();
-		printf("Do you want to continue? Enter 1 to continue: \n");int check;
-		scanf("%d",&check);
-		if(check!=1)
-			break;}
-	else if (choice == '2')
-		{readBarCode();
-		printf("Do you want to continue? Enter 1 to continue: \n");int check;
-		scanf("%d",&check);
-		if(check!=1)
-			break;}
-	else
-		{printf("Invalid choice. Please enter the given options\n");
-		getch();}
-	}
-	
-	printf("Press enter to continue...");
-	getchar();
-	getchar();
-	return 0;
+	return choice;
 }
+void exitfunc(){
+	cls();
+	printf("Thank you for using our program!!\n");	
+	printf("Created by:\nBIPUL\nHIMANSU\nISHWOR\nMAMTA\n\nSend us feedback at \nhttps://github.com/optimistic-ish/Bar-code/issues\n\n\n");
+	printf("Press any key to exit\n\n");
+	getch();	
+}
+int main()
+{   while(1)
+	{
+		char choice=title();
+		if(choice=='1'){
+			writeBarCode();
+		}
+		else if(choice=='2'){
+			readBarCode();
+		}
+		else if(choice=='3'){
+			exitfunc();
+			break;
+		}
+		else{
+			printf("\nInvalid choice, please try again !!\n");
+		}
+		printf("\n\n\nDo you want to continue?(Y/N):");char c;fflush(stdin);
+		if(c==getchar()=='y'||'Y')
+			continue;
+		else {
+			exitfunc();
+			break;
+			}
+	}
+}
+
