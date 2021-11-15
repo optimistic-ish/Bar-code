@@ -1,8 +1,13 @@
 # Bar-code:
-This repo contains the code to convert entered text to bar code(128B) and decrypt it back to the original message. This was a part of our first sem programming project.
-
+This repo contains the code to convert entered text to bar code(128B) and decrypt it back to the original message. This was a part of our first semester programming project.
 To build just make sure you include stbi libraries too.
-Probably the makefile in this directory will work too just type "make" in console and you will be fine.
+
+## To compile the code:
+You can just type $make in the terminal (for gcc) and it should create an exe file with the name BarCode.exe  
+```$make```  
+**If this doesn't work, you can do the following:**  
+Change directory of terminal to the folder containing the source code and type:  
+ ```gcc entry.c makeBars.c readBars.c -o Barcode```
 
 ## Contributors:
 - [Ishwor](https://github.com/optimistic-ish)
@@ -38,9 +43,4 @@ Probably the makefile in this directory will work too just type "make" in consol
 #### entry.c:
 	This source file contains the main() function and binds all other codes.
 
-### To compile the code:
-Change directory of terminal to the folder containing the source code and type:
-
- **gcc entry.c makeBars.c readBars.c -o Barcode**
-
-
+**Any advice to improve the codes is appreciated. Thank you!!**
