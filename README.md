@@ -3,7 +3,7 @@ This repo contains the code to convert entered text to bar code(128B) and decryp
 To build just make sure you include stbi libraries too.
 
 ## To compile the code:
-You can just type build.bat in the terminal (for gcc) or just open the build.bat file and it should create an exe file with the name BarCode.exe  
+You can just type .\build.bat in the terminal (for gcc) or just open the build.bat file and it should create an exe file with the name BarCode.exe  
 ```build.bat```  
 **If this doesn't work, you can do the following:**  
 Change directory of terminal to the folder containing the source code and type:  
